@@ -23,7 +23,7 @@ const PantryTable: React.FC = () => {
   // Fetch all pantry tasks
   const fetchTasks = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/pantry-items", {
+      const response = await axios.get("https://hospital-management-backend-zlyb.onrender.com/pantry-items", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (response.data.success) {
@@ -50,7 +50,7 @@ const PantryTable: React.FC = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/pantry-items",
+        "https://hospital-management-backend-zlyb.onrender.com/pantry-items",
         {
           pantryStaffId: parseInt(pantryStaffId), // Ensure numeric ID
           task,
@@ -73,7 +73,7 @@ const PantryTable: React.FC = () => {
   // Handle task deletion
   const handleDeleteTask = async (id: number) => {
     try {
-      await axios.delete(`http://localhost:5000/pantry-items/${id}`, {
+      await axios.delete(`https://hospital-management-backend-zlyb.onrender.com/pantry-items/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchTasks(); // Refresh tasks list after deletion
@@ -86,7 +86,7 @@ const PantryTable: React.FC = () => {
   const handleUpdateTaskStatus = async (id: number, status: string) => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/pantry-items/${id}`,
+        `https://hospital-management-backend-zlyb.onrender.com/pantry-items/${id}`,
         { status },
         {
           headers: { Authorization: `Bearer ${token}` },

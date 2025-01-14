@@ -39,7 +39,7 @@ export function FoodChartTable() {
   // Fetch all food charts
   const fetchFoodCharts = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/food-chart", {
+      const response = await axios.get("https://hospital-management-backend-zlyb.onrender.com/food-chart", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setFoodCharts(response.data.foodchart || []);
@@ -64,7 +64,7 @@ export function FoodChartTable() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/food-chart",
+        "https://hospital-management-backend-zlyb.onrender.com/food-chart",
         newFoodChart,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -112,7 +112,7 @@ export function FoodChartTable() {
       // Delete selected food charts
       await Promise.all(
         Array.from(selectedFoodCharts).map(async (id) => {
-          await axios.delete(`http://localhost:5000/food-chart/${id}`, {
+          await axios.delete(`https://hospital-management-backend-zlyb.onrender.com/food-chart/${id}`, {
             headers: { Authorization: `Bearer ${token}` },
           });
         })

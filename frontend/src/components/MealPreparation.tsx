@@ -22,7 +22,7 @@ const MealPreparation: React.FC = () => {
 
   const fetchMealPreparations = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/meal-preparation", {
+      const response = await axios.get("https://hospital-management-backend-zlyb.onrender.com/meal-preparation", {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (response.data.success) {
@@ -40,7 +40,7 @@ const MealPreparation: React.FC = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:5000/meal-preparation",
+        "https://hospital-management-backend-zlyb.onrender.com/meal-preparation",
         newMeal,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -55,7 +55,7 @@ const MealPreparation: React.FC = () => {
 
   const deleteMealPreparation = async (id: number) => {
     try {
-      await axios.delete(`http://localhost:5000/meal-preparation/${id}`, {
+      await axios.delete(`https://hospital-management-backend-zlyb.onrender.com/meal-preparation/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchMealPreparations();
@@ -67,7 +67,7 @@ const MealPreparation: React.FC = () => {
   const updateMealPreparationStatus = async (id: number, status: string) => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/meal-preparation/${id}`,
+        `https://hospital-management-backend-zlyb.onrender.com/meal-preparation/${id}`,
         { status },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -11,7 +11,7 @@ const PantryManList: React.FC = () => {
   // Fetch pantry items
   const fetchPantryItems = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/pantry', {
+      const response = await axios.get('https://hospital-management-backend-zlyb.onrender.com/pantry', {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (response.data.success) {
@@ -40,7 +40,7 @@ const PantryManList: React.FC = () => {
 
       // Send POST request to add new pantry user
       await axios.post(
-        'http://localhost:5000/pantry',  // Correct endpoint for pantry users
+        'https://hospital-management-backend-zlyb.onrender.com/pantry',  // Correct endpoint for pantry users
         { staffName, contactInfo, location },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -55,7 +55,7 @@ const PantryManList: React.FC = () => {
 
   const handleDeleteItem = async (id: number) => {
     try {
-      await axios.delete(`http://localhost:5000/pantry/${id}`, {
+      await axios.delete(`https://hospital-management-backend-zlyb.onrender.com/pantry/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchPantryItems();  // Refresh pantry list after deletion

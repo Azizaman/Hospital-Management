@@ -4,7 +4,7 @@ import Loginagequote from './Loginagequote';
 
 const Registerpage = () => {
   return (
-    <div className="flex min-h-screen flex-col sm:flex-row mt-36">
+    <div className="flex min-h-screen flex-col sm:flex-row ">
       {/* Left side for Register Card */}
       <div className="w-full sm:w-1/2 flex justify-center items-center bg-gray-50 py-8 sm:py-0">
         <Register />

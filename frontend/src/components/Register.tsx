@@ -20,7 +20,7 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/auth/register', payload)
+      const response = await axios.post('https://hospital-management-backend-zlyb.onrender.com/auth/register', payload)
       
       if (response.status === 201) {
         setSuccessMessage('User registered successfully')

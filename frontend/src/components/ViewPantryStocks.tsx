@@ -8,7 +8,7 @@ const ViewPantryStocks: React.FC = () => {
     const fetchStocks = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:5000/pantry', {
+        const response = await axios.get('https://hospital-management-backend-zlyb.onrender.com/pantry', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setStocks(response.data.pantry);

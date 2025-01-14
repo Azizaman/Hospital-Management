@@ -13,7 +13,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/auth/login', {
+      const response = await axios.post('https://hospital-management-backend-zlyb.onrender.com/auth/login', {
         email,
         password,
       });
@@ -63,7 +63,7 @@ const Login = () => {
       <div className=' mt-2 items-center ml-12'>
       <div>Dont have an Account?</div>
       <div className='items-center ml-14 text-blue-700'>
-      <a href="http://localhost:5174/signup" >Signup</a>
+      <a  className='cursor-pointer' onClick={() => navigate('/signup')} >Signup</a>
 
       </div>
       

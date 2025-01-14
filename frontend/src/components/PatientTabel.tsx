@@ -61,7 +61,7 @@ export function PatientTable() {
   // Fetch patients from the backend
   const fetchPatients = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/patient', {
+      const response = await axios.get('https://hospital-management-backend-zlyb.onrender.com/patient', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setPatients(response.data);
@@ -73,7 +73,7 @@ export function PatientTable() {
   // Fetch food chart for a patient
   const fetchFoodChart = async (patientId: string) => {
     try {
-      const response = await axios.get(`http://localhost:5000/food-chart/${patientId}`, {
+      const response = await axios.get(`https://hospital-management-backend-zlyb.onrender.com/food-chart/${patientId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSelectedFoodChart(response.data.foodChart);
@@ -158,7 +158,7 @@ export function PatientTable() {
   const handleAddPatient = async () => {
     try {
       await axios.post(
-        'http://localhost:5000/patient',
+        'https://hospital-management-backend-zlyb.onrender.com/patient',
         { ...newPatient, age: Number(newPatient.age), roomNumber: Number(newPatient.roomNumber) },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -182,7 +182,7 @@ export function PatientTable() {
 
       await Promise.all(
         selectedIds.map((id) =>
-          axios.delete(`http://localhost:5000/patient/${id}`, {
+          axios.delete(`https://hospital-management-backend-zlyb.onrender.com/patient/${id}`, {
             headers: { Authorization: `Bearer ${token}` },
           })
         )
