@@ -1,5 +1,7 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
+import { Row } from '@tanstack/react-table'; // Correct imports from react-table
+
 import {
   Button,
   Input,
@@ -17,6 +19,7 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 
+// Patient and FoodChart types
 export type Patient = {
   id: string;
   name: string;
@@ -36,6 +39,7 @@ export type FoodChart = {
   ingredients: string;
 };
 
+// ColumnHelper (use correct import)
 const columnHelper = createColumnHelper<Patient>();
 
 export function PatientTable() {
@@ -72,7 +76,6 @@ export function PatientTable() {
       const response = await axios.get(`http://localhost:5000/food-chart/${patientId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log('Food Chart Response:', response.data.foodChart); 
       setSelectedFoodChart(response.data.foodChart);
     } catch (error) {
       console.error('Error fetching food chart:', error);
@@ -83,18 +86,19 @@ export function PatientTable() {
     fetchPatients();
   }, []);
 
+  // Define table columns
   const columns = useMemo(
     () => [
       {
         id: 'select',
-        header: ({ table }) => (
+        header: ({ table }: { table: any }) => (
           <input
             type="checkbox"
             checked={table.getIsAllRowsSelected()}
             onChange={table.getToggleAllRowsSelectedHandler()}
           />
         ),
-        cell: ({ row }) => (
+        cell: ({ row }: { row: Row<Patient> }) => (
           <input
             type="checkbox"
             checked={row.getIsSelected()}
@@ -129,7 +133,7 @@ export function PatientTable() {
       {
         id: 'foodChart',
         header: 'Food Chart',
-        cell: ({ row }) => (
+        cell: ({ row }: { row: Row<Patient> }) => (
           <Button onClick={() => fetchFoodChart(row.original.id)}>
             View Food Chart
           </Button>
@@ -139,6 +143,7 @@ export function PatientTable() {
     []
   );
 
+  // Initialize react-table
   const table = useReactTable({
     columns,
     data: patients,
@@ -149,6 +154,7 @@ export function PatientTable() {
     onRowSelectionChange: setRowSelection,
   });
 
+  // Add a new patient
   const handleAddPatient = async () => {
     try {
       await axios.post(
@@ -167,6 +173,7 @@ export function PatientTable() {
     }
   };
 
+  // Delete selected patients
   const handleDeleteSelected = async () => {
     try {
       const selectedIds = Object.keys(rowSelection)
@@ -233,7 +240,7 @@ export function PatientTable() {
               className="mb-2"
             />
           </div>
-          <Button onClick={handleAddPatient} className="mt-4">Add Patient</Button>
+          <Button onClick={handleAddPatient} className="mt-4 ml-10 px-9 space-y-6">Add Patient</Button>
         </div>
       )}
 

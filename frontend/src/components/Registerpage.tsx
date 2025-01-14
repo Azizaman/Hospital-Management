@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Register from './Register'; // Assuming you have a Register component
 import Loginagequote from './Loginagequote';
 

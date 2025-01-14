@@ -11,16 +11,9 @@ import {
   Input,
 } from "@/components/ui";
 
-type Delivery = {
-  id: string;
-  deliveryDate: string;
-  status: string;
-  // Add other properties as needed
-};
 
-interface DeliveryDashboardProps {
-  deliveries: Delivery[] | undefined; // Ensure deliveries can be undefined
-}
+
+
 
 const DeliveryDashboard: React.FC = () => {
   const [deliveries, setDeliveries] = useState<any[]>([]);

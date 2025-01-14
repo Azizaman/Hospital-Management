@@ -6,7 +6,7 @@ import ManagerDashboard from '../src/components/ManagerDashboard';
 import PantryDashboard from './components/PantryDashboard';
 import DeliveryDashboard from './components/DeliveryDashboard';
 import PrivateRoute from './components/PrivateRoute';
-import ManagerPatients from './components/Managerpatients';
+
 import { PatientTable } from './components/PatientTabel';
 import { FoodChartTable } from './components/FoodChartTable';
 import PantryTabel from './components/PantryTabel';
